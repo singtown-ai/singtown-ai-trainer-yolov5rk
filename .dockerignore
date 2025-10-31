@@ -1,0 +1,7 @@
+.git
+.gitignore
+.gitmodules
+.devcontainer
+.vscode
+.venv
+Dockerfile
