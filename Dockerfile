@@ -11,4 +11,4 @@ COPY . /app
 RUN cd singtown-ai-trainer-yolov5rk && uv sync
 RUN cd rknn2 && uv sync
 
-CMD ["uv", "run", "main.py"]
+CMD ["sh", "run.sh"]

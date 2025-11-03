@@ -1,7 +1,5 @@
-.git
-.gitignore
-.gitmodules
-.devcontainer
-.vscode
-.venv
-Dockerfile
+**/.git
+**/.gitignore
+**/.gitmodules
+**/.venv
+**/.Dockerfile
