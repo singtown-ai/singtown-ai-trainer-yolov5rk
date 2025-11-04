@@ -7,5 +7,5 @@ requires-python = ">=3.11"
 dependencies = [
     "rknn-toolkit2>=2.3.2",
     "setuptools>=80.9.0",
-    "singtown-ai==1.6.2",
+    "singtown-ai==1.8.0",
 ]

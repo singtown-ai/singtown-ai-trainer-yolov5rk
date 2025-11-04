@@ -1,24 +1,7 @@
-from singtown_ai import SingTownAIClient, MOCK_TRAIN_OBJECT_DETECTION, stdout_watcher
+from singtown_ai import SingTownAIClient
+from singtown_ai import stdout_watcher
 
-# mock_data = MOCK_TRAIN_OBJECT_DETECTION
-# mock_data['task'] = {
-#     "project": {
-#         "labels": ["cat", "dog"],
-#         "type": "OBJECT_DETECTION",
-#     },
-#     "device": "singtown-ai-vision-module",
-#     "model_name": "yolov5s_640",
-#     "freeze_backbone": True,
-#     "batch_size": 16,
-#     "epochs": 10,
-#     "learning_rate": 0.001,
-#     "early_stopping": 3,
-#     "export_width": 640,
-#     "export_height": 480,
-# }
-client = SingTownAIClient(
-    # mock_data=mock_data,
-)
+client = SingTownAIClient()
 
 @stdout_watcher(interval=1)
 def on_stdout_write(content: str):

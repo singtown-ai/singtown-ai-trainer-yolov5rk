@@ -1,24 +1,8 @@
-from singtown_ai import SingTownAIClient, MOCK_TRAIN_OBJECT_DETECTION, stdout_watcher, file_watcher
+from singtown_ai import SingTownAIClient
+from singtown_ai import stdout_watcher, file_watcher
+from singtown_ai import export_yolo
 
-mock_data = MOCK_TRAIN_OBJECT_DETECTION
-mock_data['task'] = {
-    "project": {
-        "labels": ["cat", "dog"],
-        "type": "OBJECT_DETECTION",
-    },
-    "device": "singtown-ai-vision-module",
-    "model_name": "yolov5s_640",
-    "freeze_backbone": True,
-    "batch_size": 16,
-    "epochs": 10,
-    "learning_rate": 0.001,
-    "early_stopping": 3,
-    "export_width": 640,
-    "export_height": 480,
-}
-client = SingTownAIClient(
-    mock_data=mock_data,
-)
+client = SingTownAIClient()
 
 @stdout_watcher(interval=1)
 def on_stdout_write(content: str):
@@ -58,12 +42,10 @@ MODEL_CLASS, IMG_SZ = MODEL_NAME.split("_")
 print(f"CUDA available:  {torch.cuda.is_available()}")
 
 print("Download dataset")
-client.export_yolo(DATASET_PATH)
+export_yolo(client, DATASET_PATH)
 
 print("Training started")
 subprocess.run(f"python train.py --data ../dataset/data.yaml --weights ../weights/yolov5s640_coco2017.pt --epochs {EPOCHS} --img {IMG_SZ} --batch-size {BATCH_SIZE}", shell=True, check=True, cwd=Path(__file__).parent.parent/"yolov5")
 
 print("Export onnx")
 subprocess.run(f"python export.py --rknpu --weights runs/train/exp/weights/best.pt --img {EXPORT_WIDTH} {EXPORT_HEIGHT}", shell=True, check=True, cwd=Path(__file__).parent.parent/"yolov5")
-
-print("Export rknn")
