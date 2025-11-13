@@ -12,7 +12,7 @@ unset SINGTOWN_AI_HOST
 unset SINGTOWN_AI_TOKEN
 unset SINGTOWN_AI_TASK_ID
 export SINGTOWN_AI_MOCK_TASK_PATH="../mock-task.json"
-export SINGTOWN_AI_MOCK_DATASET_PATH="../classification-20.json"
+export SINGTOWN_AI_MOCK_DATASET_PATH="../object-detection-20.json"
 uv run main.py
 ```
 
