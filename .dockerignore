@@ -1,5 +1,6 @@
-**/.git
-**/.gitignore
-**/.gitmodules
-**/.venv
-**/.Dockerfile
+.git
+yolov5/.git
+yolov5/.git/
+yolov5/.git/*
+.gitmodules
+*/*/.venv
