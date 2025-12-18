@@ -48,4 +48,4 @@ print("Training started")
 subprocess.run(f"python train.py --data ../dataset/data.yaml --weights ../weights/yolov5s640_coco2017.pt --epochs {EPOCHS} --img {IMG_SZ} --batch-size {BATCH_SIZE}", shell=True, check=True, cwd=Path(__file__).parent.parent/"yolov5")
 
 print("Export onnx")
-subprocess.run(f"python export.py --rknpu --weights runs/train/exp/weights/best.pt --img {EXPORT_WIDTH} {EXPORT_HEIGHT}", shell=True, check=True, cwd=Path(__file__).parent.parent/"yolov5")
+subprocess.run(f"python export.py --rknpu rv1103 --weights runs/train/exp/weights/best.pt --img {EXPORT_HEIGHT} {EXPORT_WIDTH} --include onnx", shell=True, check=True, cwd=Path(__file__).parent.parent/"yolov5")
